@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include "Ammo.h"
+
+// This class is an example of requirement: LO1. Design and implement a class.
 class Enemy
 {
 protected:

@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "Ammo.cpp"
+#include "Ammo.h"
 // Called to print the current stats to the terminal.
 void PrintCurrentStats(Game* game) {
 	cout << "Current Stats:"
@@ -89,7 +89,7 @@ void PerformAttack(Game* game) {
 	Enemy* enemy = game->getEnemy();
 
 	// Ask user which snowball to use.
-	int selectedAmmo = AskForAmmoResponse();
+	int selectedAmmo = Ammo::AskForAmmoResponse();
 	Ammo* ammo;
 
 	// Check if user has snowballs to throw.

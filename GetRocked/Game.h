@@ -38,6 +38,7 @@ private:
 	int enemiesDefated;
 
 public:
+	// This constructor is an example of requirement: LO1b.Overload a constructor
 	// Constructor for loading a saved game.
 	Game(int health, int points, int snowballs, int superSnowballs, 
 		int state, bool hasGathered, bool generateAdult, bool generateEnemy, 
@@ -61,6 +62,7 @@ public:
 
 	// Default constructor for starting a new game.
 	Game() {
+		// The following is an example of the requirement: LO1c. Utilize an initialization list
 		currentHealth = 3;
 		currentPoints = 0;
 		currentSnowballs = 1;

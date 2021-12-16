@@ -14,5 +14,7 @@ public:
 	int getDamage() {
 		return damage;
 	}
+
+	static int AskForAmmoResponse();
 };
 

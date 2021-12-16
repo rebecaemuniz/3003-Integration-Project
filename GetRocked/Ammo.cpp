@@ -2,8 +2,9 @@
 #include <limits>
 using namespace std;
 
+// This method is an example of requirement: LO1a. At least one class in a header file with non-trivial methods implemented in a cpp file
 // Ask the user for choice of ammo type.
-static int AskForAmmoResponse() {
+int Ammo::AskForAmmoResponse() {
 	string availableActions = "\n1 (Snowball), 2 (Super Snowball!!)\n";
 	string question = "What ammo type do you want to use?\n";
 	int input;
