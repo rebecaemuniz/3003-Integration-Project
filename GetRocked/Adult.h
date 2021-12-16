@@ -10,6 +10,16 @@ class Adult : public Enemy
 {
 private:
 public:
+
+	/*
+	This class is an example of requirement:
+		LO5. Explain the relationship between object-oriented inheritance 
+			(code-sharing and overriding) and subtyping (the idea of a 
+			subtype being usable in a context that expects the supertype).
+	The Adult class will inherit the member properties of Enemy: 
+		int currentHealth, int maxHealth, int pointsWorth
+		Adult is a subtype of Enemy.
+	*/
 	/// <summary>
 	/// Default constructor.
 	/// </summary>
