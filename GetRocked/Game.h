@@ -12,6 +12,9 @@
 #include "Utility.h"
 using namespace std;
 
+// This following comment is for requirement: 
+//		LO4. Include a comment in which you compare and contrast the procedural/functional 
+//		approach and the object-oriented approach.
 /* The object oriented approach is about encapsulating dataand behavior into objects.OOP
  * uses classes as blueprints for an object. This object will have their own methods and be 
  * able to interact with other objects to perform actions in an application. OOP follows a bottom
