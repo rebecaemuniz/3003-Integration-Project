@@ -1,6 +1,9 @@
 #pragma once
 #include "Enemy.h"
 #include <string>
+// This Class is an example of requirement:
+//	LO2. Use subclassing to design simple class hierarchies that allow code
+//		to be reused for distinct subclasses.
 // Kid is a type of enemy the user can encounter.
 // Creating an object of type Kid calls the base class, Enemy's, constructor.
 class Kid : public Enemy
