@@ -28,6 +28,10 @@ using namespace std;
 class Game
 {
 private:
+	/*
+		The following private member properties are examples of requirement:
+		LO6. Use object-oriented encapsulation mechanisms such as interfaces and private members.
+	*/
 	int currentHealth;
 	int currentPoints;
 	int currentSnowballs;
