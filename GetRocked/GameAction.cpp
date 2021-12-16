@@ -1,5 +1,10 @@
 #include "GameAction.h"
-// Get the available actions for the given game state.
+
+/// <summary>
+/// Get the available actions for the given game state.
+/// </summary>
+/// <param name="gameState">The current state of the game.</param>
+/// <returns>A string of available actions the user can perform.</returns>
 string getAvailableActions(GameState gameState) {
 	if (gameState == MainState) {
 		return "1 (Move), 2 (Gather), 4 (Save), 5 (Quit), 0 (Help).\n";

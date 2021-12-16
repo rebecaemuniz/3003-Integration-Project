@@ -2,6 +2,10 @@
 #include "Utility.h"
 #include "GameState.h"
 using namespace std;
+
+/// <summary>
+/// Actions the user can perform.
+/// </summary>
 enum GameAction {
 	Help,	//0
 	Move,	//1
@@ -11,10 +15,17 @@ enum GameAction {
 	Quit	//5
 };
 
-// Get the available actions for the given game state.
+
+/// <summary>
+/// Get the available actions for the given game state.
+/// </summary>
+/// <param name="gameState">The current state of the game.</param>
+/// <returns>A string of available actions the user can perform.</returns>
 string getAvailableActions(GameState gameState);
 
-// Ask for the user's choice for action type.
+/// <summary>
+/// Ask for the user's choice for action type.
+/// </summary>
 static GameAction AskForActionResponse(GameState gameState) {
 	string question = "What would you like to do?\n";
 	string availableActions = getAvailableActions(gameState);
@@ -40,6 +51,9 @@ static GameAction AskForActionResponse(GameState gameState) {
 	return GameAction(input);
 }
 
+/// <summary>
+///  This method prints to the terminal the help guide.
+/// </summary>
 static void DisplayHelp() {
 	cout << "Help Guide:\n"
 		<< "Key - Action - Description\n"

@@ -3,10 +3,17 @@
 #include <iostream>
 namespace std
 {
+	/// <summary>
+	/// Utility class containing reusable static methods.
+	/// </summary>
 	class Utility
 	{
 	public:
-		// Print a string to the terminal and get the user's input.
+		/// <summary>
+		/// Print a string to the terminal and get the user's input.
+		/// </summary>
+		/// <param name="statement">The statement to print.</param>
+		/// <returns>The input from the user.</returns>
 		static string PrintAndGetResponse(string statement) {
 			string input;
 			cout << statement << "\n";
@@ -14,17 +21,26 @@ namespace std
 			return input;
 		}
 
+		/// <summary>
+		/// Print a string to the terminal and wait for the user to press a key.
+		/// </summary>
+		/// <param name="statement"></param>
 		static void PrintAndPause(string statement) {
 			cout << statement << "\n";
 			system("pause");
 		}
 
-		// Called to print a divider to terminal.
+		/// <summary>
+		/// Called to print a divider to terminal.
+		/// </summary>
 		static void PrintDivider() {
 			cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
 		}
 
-		// Called to print error messages to the terminal depending on the errorCode.
+		/// <summary>
+		/// Called to print error messages to the terminal depending on the errorCode.
+		/// </summary>
+		/// <param name="errorCode">Error code to print to the screen.</param>
 		static void PrintError(int errorCode) {
 			string errorMessage;
 

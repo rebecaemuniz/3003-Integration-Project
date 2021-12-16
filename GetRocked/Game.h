@@ -12,15 +12,16 @@
 #include "Utility.h"
 using namespace std;
 
-// The object oriented approach is about encapsulating data and behavior into objects. OOP
-// uses classes as blueprints for an object. This object will have their own methods and be 
-// able to interact with other objects to perform actions in an application. OOP follows a bottom
-// up apprach and is able to hide data so it is more secure.   
-// The procedural/functional  approach passes data from function to function to get a result.
-// They follow a top down approach, overloading is not possible, and data is less secure because they
-// have no access specifiers like private, public, and protected.
+/* The object oriented approach is about encapsulating dataand behavior into objects.OOP
+ * uses classes as blueprints for an object. This object will have their own methods and be 
+ * able to interact with other objects to perform actions in an application. OOP follows a bottom
+ * up apprach and is able to hide data so it is more secure.
+ * The procedural/functional  approach passes data from function to function to get a result.
+ * They follow a top down approach, overloading is not possible, and data is less secure because they
+ * have no access specifiers like private, public, and protected.
+ */
 
-// Game class that contains the flow and variables of the game.
+/// Game class that contains the flow and variables of the game.
 class Game
 {
 private:
@@ -39,7 +40,20 @@ private:
 
 public:
 	// This constructor is an example of requirement: LO1b.Overload a constructor
-	// Constructor for loading a saved game.
+	/// <summary>
+	/// Constructor for loading a saved game.
+	/// </summary>
+	/// <param name="health">The player's health.</param>
+	/// <param name="points">The player's accumulated points.</param>
+	/// <param name="snowballs">The player's accumulated number of snowballs.</param>
+	/// <param name="superSnowballs">The player's accumulated number of super snowballs.</param>
+	/// <param name="state">The current state of the game.</param>
+	/// <param name="hasGathered">Whether the player has gathered at the current location.</param>
+	/// <param name="generateAdult">Whether to generate an adult at the next location.</param>
+	/// <param name="generateEnemy">Whether an enemy has been generated at the current location.</param>
+	/// <param name="snowballsObtained">Total number of snowballs obtained.</param>
+	/// <param name="superSnowballsObtained">Total number of super snowballs obtained.</param>
+	/// <param name="enemiesRocked">Total number of enemies defeated.</param>
 	Game(int health, int points, int snowballs, int superSnowballs, 
 		int state, bool hasGathered, bool generateAdult, bool generateEnemy, 
 		int snowballsObtained, int superSnowballsObtained, int enemiesRocked) {
@@ -60,7 +74,9 @@ public:
 		Utility::PrintDivider();
 	}
 
-	// Default constructor for starting a new game.
+	/// <summary>
+	/// Default constructor for starting a new game.
+	/// </summary>
 	Game() {
 		// The following is an example of the requirement: LO1c. Utilize an initialization list
 		currentHealth = 3;
@@ -80,112 +96,173 @@ public:
 		Utility::PrintDivider();
 	}
 
-	// Getter method to get the current Health of the player.
+	/// <summary>
+	/// Getter method to get the current Health of the player.
+	/// </summary>
+	/// <returns></returns>
 	string getHealth() {
 		return std::to_string(currentHealth);
 	}
 
-	// Decrement the player's current health.
+	/// <summary>
+	/// Decrement the player's current health.
+	/// </summary>
 	void loseHealth() {
 		currentHealth--;
 	}
 
-	// Getter method to get the current Points accumulated.
+	/// <summary>
+	/// Getter method to get the current Points accumulated.
+	/// </summary>
+	/// <returns></returns>
 	string getPoints() {
 		return std::to_string(currentPoints);
 	}
 
-	// Called to increate the points in the game after defeating an enemy.
+	/// <summary>
+	/// Called to increate the points in the game after defeating an enemy.
+	/// </summary>
+	/// <param name="amount"></param>
 	void gainPoints(int amount) {
 		currentPoints += amount;
 	}
 
-	// Getter method to get the current count of Snowballs.
+	/// <summary>
+	/// Getter method to get the current count of Snowballs.
+	/// </summary>
+	/// <returns></returns>
 	int getSnowballs() {
 		return currentSnowballs;
 	}
 
-	// Increment the amount of current snowballs.
+	/// <summary>
+	/// Increment the amount of current snowballs.
+	/// </summary>
 	void gainSnowball() {
 		currentSnowballs++;
 	}
 
-	// Decrement the amount of snowballs.
+	/// <summary>
+	/// Decrement the amount of snowballs.
+	/// </summary>
 	void useSnowball() {
 		currentSnowballs--;
 	}
 
-	// Getter method to get the current count of Super Snowballs.
+	/// <summary>
+	/// Getter method to get the current count of Super Snowballs.
+	/// </summary>
+	/// <returns></returns>
 	int getSuperSnowballs() {
 		return currentSuperSnowballs;
 	}
 
-	// Increment the amount of super current snowballs.
+	/// <summary>
+	/// Increment the amount of super current snowballs.
+	/// </summary>
 	void gainSuperSnowball() {
 		currentSuperSnowballs++;
 	}
 
-	// Decrement the amount of super snowballs.
+	/// <summary>
+	/// Decrement the amount of super snowballs.
+	/// </summary>
 	void useSuperSnowball() {
 		currentSuperSnowballs--;
 	}
 
-	// Getter method to get the current game state of the game.
+	/// <summary>
+	/// Getter method to get the current game state of the game.
+	/// </summary>
+	/// <returns>The current state of the game.</returns>
 	GameState getGameState() {
 		return gameState;
 	}
 
-	// Setter method to set the state of the game.
+	/// <summary>
+	/// Setter method to set the state of the game.
+	/// </summary>
+	/// <param name="state">The current state of the game.</param>
 	void setGameState(GameState state) {
 		gameState = state;
 	}
 
-	// Getter method to get if the user has already gathered at the current location.
+	/// <summary>
+	/// Getter method to get if the user has already gathered at the current location.
+	/// </summary>
+	/// <returns>Whether or not the user has gathered at the current location.</returns>
 	bool getHasGathered() {
 		return hasGatheredAtLocation;
 	}
 
-	// Setter method to set if the user has already gathered at the current location.
+	/// <summary>
+	/// Setter method to set if the user has already gathered at the current location.
+	/// </summary>
+	/// <param name="hasGathered">Sets if the user has gathered at the current location.</param>
 	void setHasGathered(bool hasGathered) {
 		hasGatheredAtLocation = hasGathered;
 	}
 
-	// Getter method to get the current enemy.
+	/// <summary>
+	/// Getter method to get the current enemy.
+	/// </summary>
+	/// <returns>The enemy.</returns>
 	Enemy* getEnemy() {
 		return enemy;
 	}
 
-	// Get if an adult should be generated.
+	/// <summary>
+	/// Get if an adult should be generated.
+	/// </summary>
+	/// <returns>Whether or not an adult should be generated.</returns>
 	bool getShouldGenerateAdult() {
 		return shouldGenerateAdult;
 	}
 
-	// Set if the next encounter should be an adult.
+	/// <summary>
+	/// Set if the next encounter should be an adult.
+	/// </summary>
+	/// <param name="generateAdult">Set whether or not an adult should be generated next.</param>
 	void setShouldGenerateAdult(bool generateAdult) {
 		shouldGenerateAdult = generateAdult;
 	}
 	
-	// Method called to assign the enemy of type Kid.
+	/// <summary>
+	/// Method called to assign the enemy of type Kid.
+	/// </summary>
+	/// <param name="kid">The enemy to assign.</param>
 	void assignEnemy(Kid* kid) {
 		enemy = kid;
 	}
 
-	// Method called to assign the enemy of type Adult.
+	/// <summary>
+	/// Method called to assign the enemy of type Adult.
+	/// </summary>
+	/// <param name="adult">The enemy to assign.</param>
 	void assignEnemy(Adult* adult) {
 		enemy = adult;
 	}
 
-	// Getter method for if an enemy has already been generated at the current location.
+	/// <summary>
+	/// Getter method for if an enemy has already been generated at the current location.
+	/// </summary>
+	/// <returns></returns>
 	bool getHasGeneratedEnemy() {
 		return hasGeneratedEnemy;
 	}
 
-	// Setter method to set the enemy encounter.
+	/// <summary>
+	/// Setter method to set the enemy encounter.
+	/// </summary>
+	/// <param name="generatedEnemy">Sets whether or not an enemy has been generated.</param>
 	void setHasGeneratedEnemy(bool generatedEnemy) {
 		hasGeneratedEnemy = generatedEnemy;
 	}
 
-	// Called to get the description of the new location.
+	/// <summary>
+	/// Called to get the description of the new location.
+	/// </summary>
+	/// <returns>A string describing the location the user arrived at.</returns>
 	string displayLocationMessage() {
 		if (gameState == MainState) {
 			return "This location is calm and there are no enemies in sight.";
@@ -207,37 +284,55 @@ public:
 		}
 	}
 
-	// Getter method to get the total number of snowballs collected.
+	/// <summary>
+	/// Getter method to get the total number of snowballs collected.
+	/// </summary>
+	/// <returns></returns>
 	int getSnowballsCollected() {
 		return snowballsCollected;
 	}
 
-	// Method to increment the number of snowballs collected.
+	/// <summary>
+	/// Method to increment the number of snowballs collected.
+	/// </summary>
 	void incrementSnowballsCollected() {
 		snowballsCollected++;
 	}
 
-	// Getter method to get the total number of super snowballs collected.
+	/// <summary>
+	/// Getter method to get the total number of super snowballs collected.
+	/// </summary>
+	/// <returns></returns>
 	int getSuperSnowballsCollected() {
 		return superSnowballsCollected;
 	}
 
-	// Method to increment the number of super snowballs collected.
+	/// <summary>
+	/// Method to increment the number of super snowballs collected.
+	/// </summary>
 	void incrementSuperSnowballsCollected() {
 		superSnowballsCollected++;
 	}
 
-	// Getter method to get the total number of enemies defeated.
+	/// <summary>
+	/// Getter method to get the total number of enemies defeated.
+	/// </summary>
+	/// <returns></returns>
 	int getEnemiesDefated() {
 		return enemiesDefated;
 	}
 
-	// Called to get whether the user is defeated.
+	/// <summary>
+	/// Called to get whether the user is defeated.
+	/// </summary>
+	/// <returns></returns>
 	bool isDefeated() {
 		return currentHealth <= 0;
 	}
 
-	// Method to increment the number of enemies defeated.
+	/// <summary>
+	/// Method to increment the number of enemies defeated.
+	/// </summary>
 	void incrementEnemiesDefeated() {
 		enemiesDefated++;
 	}

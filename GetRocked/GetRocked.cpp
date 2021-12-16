@@ -12,7 +12,10 @@
 #include "Game.h"
 using namespace std;
 
-// This is the main function that the application runs.
+/// <summary>
+/// This is the main function that the application runs.
+/// </summary>
+/// <returns>An integer representing if the game completed cleanly.</returns>
 int main()
 {
     std::cout << "Welcome to Get Rocked!\n"

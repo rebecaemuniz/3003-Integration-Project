@@ -1,6 +1,9 @@
 #include "Game.h"
 #include "Ammo.h"
-// Called to print the current stats to the terminal.
+/// <summary>
+/// Called to print the current stats to the terminal.
+/// </summary>
+/// <param name="game">The current game object.</param>
 void PrintCurrentStats(Game* game) {
 	cout << "Current Stats:"
 		<< "\nHealth: " << game->getHealth()
@@ -9,13 +12,19 @@ void PrintCurrentStats(Game* game) {
 		<< "\nSuper Snowballs: " << game->getSuperSnowballs() << "\n" << endl;
 }
 
-// Called to print the current stats and the locatio description to the terminal.
+/// <summary>
+/// Called to print the current stats and the locatio description to the terminal.
+/// </summary>
+/// <param name="game">The current game object.</param>
 void PrintCurrentStatsWithLocation(Game* game) {
 	PrintCurrentStats(game);
 	cout << game->displayLocationMessage() << "\n" << endl;
 }
 
-// Called to perform the action of gathering snowballs at the current location.
+/// <summary>
+/// Called to perform the action of gathering snowballs at the current location.
+/// </summary>
+/// <param name="game">The current game object.</param>
 void PerformGather(Game* game) {
 	// If the user has already gathered at this location, do nothing.
 	if (game->getHasGathered()) {
@@ -51,7 +60,10 @@ void PerformGather(Game* game) {
 	game->setHasGathered(true);
 }
 
-// Called to perform the action of moving to a new location.
+/// <summary>
+/// Called to perform the action of moving to a new location.
+/// </summary>
+/// <param name="game">The current game object.</param>
 void PerformMove(Game* game) {
 	// The player loses health if moving while the enemy has not yet been defeated.
 	if (game->getGameState() == EncounterState) {
@@ -77,7 +89,10 @@ void PerformMove(Game* game) {
 	}
 }
 
-// Called to perform the action of throwing a snowball at a playground enemy.
+/// <summary>
+/// Called to perform the action of throwing a snowball at a playground enemy.
+/// </summary>
+/// <param name="game">The current game object.</param>
 void PerformAttack(Game* game) {
 	// Check if user can use attack action.
 	if (game->getGameState() != EncounterState) {
@@ -90,31 +105,45 @@ void PerformAttack(Game* game) {
 
 	// Ask user which snowball to use.
 	int selectedAmmo = Ammo::AskForAmmoResponse();
-	Ammo* ammo;
+	Ammo* ammoSelected;
 
-	// Check if user has snowballs to throw.
+	// The following logic flow is an example of requirement:
+	//		LO3. Correctly reason about control flow in a program using dynamic dispatch.
+	// Depending on the user's input choice, 'ammo' is either a 'Snowball' or a 
+	//		'SuperSnowball'. Then when Enemy::reduceHealth is called, 
+	//		dynamic dispatch will determine which overloaded method to call based on the ammo type.
 	if (selectedAmmo == 1) {
+		// Check if user has snowballs to throw.
 		if (game->getSnowballs() == 0) {
 			cout << "Oops! You don't have any Snowballs to throw.\n";
 			return;
 		}
-		ammo = new Snowball();
+
+		// Create appropriate ammo type.
+		Snowball* ammo = new Snowball();
 		game->useSnowball();
+		ammoSelected = ammo;
+
+		// Apply snowball attack.
+		enemy->reduceHealth(ammo);
 	}
 	else {
+		// Check if user has snowballs to throw.
 		if (game->getSuperSnowballs() == 0) {
 			cout << "Oops! You don't have any Super Snowballs to throw.\n";
 			return;
 		}
-		ammo = new SuperSnowball();
+
+		// Create appropriate ammo type.
+		SuperSnowball* ammo = new SuperSnowball();
 		game->useSuperSnowball();
+		ammoSelected = ammo;
+
+		// Apply snowball attack.
+		enemy->reduceHealth(ammo);
 	}
 
 	system("CLS");
-
-	// Apply snowball attack.
-	// Using dynamic dispatching to determine how much health the enemy will lose.
-	enemy->reduceHealth(ammo);
 
 	// Adjust game statistics.
 	if (enemy->isDefeated()) {
@@ -129,17 +158,23 @@ void PerformAttack(Game* game) {
 		// Set the game state back to main state.
 		game->setGameState(MainState);
 	}
+	else { // The enemy has not been defeated.
+		game->loseHealth();
+	}
 
 	// If the user selects to use a Super Snowball against a kid,
 	// an adult will step in at the next location.
 	if (enemy->getMaxHealth() == 1
-		&& ammo->getDamage() == 2) {
+		&& ammoSelected->getDamage() == 2) {
 		game->setShouldGenerateAdult(true);
 	}
 
 }
 
-// Generate either an Adult or a Kid enemy.
+/// <summary>
+/// Generate either an Adult or a Kid enemy.
+/// </summary>
+/// <param name="game">The current game object.</param>
 void GenerateEncounter(Game* game) {
 	int roll = rand() % 100;
 	// 33 percent chance the encounter is an adult.
@@ -159,7 +194,10 @@ void GenerateEncounter(Game* game) {
 	game->setHasGeneratedEnemy(true);
 }
 
-// Print the ending statistics to the terminal.
+/// <summary>
+/// Print the ending statistics to the terminal.
+/// </summary>
+/// <param name="game">The current game object.</param>
 void DisplayClosingStats(Game* game) {
 	cout << "Closing Stats:" 
 		<< "\nPoints Earned: " << game->getPoints()
@@ -170,7 +208,11 @@ void DisplayClosingStats(Game* game) {
 
 }
 
-// Called to initialize the game loop to start playing the game.
+/// <summary>
+/// Called to initialize the game loop to start playing the game.
+/// </summary>
+/// <param name="game">The current game objecgt.</param>
+/// <returns>An integer representing if the game completed cleanly.</returns>
 int StartGame(Game* game) {
 	// Continue to play until the user ends the game.
 	while (game->getGameState() != EndState

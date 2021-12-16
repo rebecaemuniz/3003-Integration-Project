@@ -5,12 +5,14 @@
 //	LO2. Use subclassing to design simple class hierarchies that allow code
 //		to be reused for distinct subclasses.
 // Adult is a type of enemy the user can encounter.
-// Creating an object of type Adult calls the base class, Enemy's, constructor.
+/// Creating an object of type Adult calls the base class, Enemy's, constructor.
 class Adult : public Enemy
 {
 private:
 public:
-	// Default constructor.
+	/// <summary>
+	/// Default constructor.
+	/// </summary>
 	Adult() : Enemy(2) {
 	}
 

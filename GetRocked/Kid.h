@@ -4,12 +4,16 @@
 // This Class is an example of requirement:
 //	LO2. Use subclassing to design simple class hierarchies that allow code
 //		to be reused for distinct subclasses.
-// Kid is a type of enemy the user can encounter.
-// Creating an object of type Kid calls the base class, Enemy's, constructor.
+/// <summary>
+/// Kid is a type of enemy the user can encounter.
+/// Creating an object of type Kid calls the base class, Enemy's, constructor.
+/// </summary>
 class Kid : public Enemy
 {
 public:
-	// Default constructor.
+	/// <summary>
+	/// Default constructor.
+	/// </summary>
 	Kid() : Enemy(1) {
 	}
 
